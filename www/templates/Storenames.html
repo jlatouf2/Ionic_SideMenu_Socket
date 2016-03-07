@@ -1,0 +1,176 @@
+<ion-view title="Storenames" ng-controller="StorenamesController as logout_ctrl">
+ 	<header class="bar bar-header bar-positive">
+ 		<h1 class="title">Storenames!</h1>
+ 	</header>
+ 	
+  <ion-content class="has-header padding">
+	
+	<div class="list">
+		
+	
+<H1> Location and Postal Code</H1>
+			<div ng-show="black" id="results"></div>
+<p>When you Search for new store name the coordinates are not added</p>
+<p>When you add New Store name the coordinates are added to the db and the results are updated </p>
+
+<H1> Enter Store Name: </H1>
+		<input type="text" ng-model="store"  id="store" >
+
+	   <input type="button" class="button"  value="Submit" ng-click="changeStatus30();">
+
+	<button class="btn btn-default btn-xs"  ng-click="submitName()">Add Name</button>
+
+
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Store</button>
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Store Name / Create Original Line</h4>
+      </div>
+      <div class="modal-body">
+        <p>Enter Store Name.</p>
+        		<input type="text" ng-model="storetoAdd" id="storetoAdd" >
+      </div>
+            <div class="modal-body">
+        <p>Enter Postal Code. {{postal123}}</p>
+        		<!--<input type="text" ng-model="postalcodetoAdd" id="postalcodetoAdd" > -->
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="submitInformation()">Add Name</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<h1> Store Available in Area</h1>
+
+<div class="table-responsive">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Store</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="contact in contacts | filter:search | orderBy:'post_id'">
+				<td> <a href="/#/storelines" menu-close data-target="#myModal" ng-click="grabStuff(contact.store)" class="list-group-item active">{{contact.store}}</td>
+				<td>
+					<a href="/#/contacts/{{$index}}"  menu-close class="btn btn-default btn-xs">View</a>
+					<button class="btn btn-danger btn-xs" menu-close ng-click="delete($index)">Delete</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+
+	</div>
+
+  </ion-content>
+
+</ion-view>
+
+
+
+<!--
+<div ng-controller="storenamesController">
+
+<H1> Location and Postal Code</H1>
+			<div ng-show="black" id="results"></div>
+<p>When you Search for new store name the coordinates are not added</p>
+<p>When you add New Store name the coordinates are added to the db and the results are updated </p>
+
+<H1> Enter Store Name: </H1>
+		<input type="text" ng-model="store"  id="store" >
+
+	   <input type="button" class="button"  value="Submit" ng-click="changeStatus30();">
+
+	<button class="btn btn-default btn-xs"  ng-click="submitName()">Add Name</button>
+
+
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Store</button>
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Store Name / Create Original Line</h4>
+      </div>
+      <div class="modal-body">
+        <p>Enter Store Name.</p>
+        		<input type="text" ng-model="storetoAdd" id="storetoAdd" >
+      </div>
+            <div class="modal-body">
+        <p>Enter Postal Code. {{postal123}}</p>
+
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="submitInformation()">Add Name</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+	Trigger the modal with a button
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+Modal
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+MOdal content
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <p>Some text in the modal.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+******To add this to any button just add : data-toggle="modal" data-target="#myModal" *********
+
+
+<h1> Store Available in Area</h1>
+
+<div class="table-responsive">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Store</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="contact in contacts | filter:search | orderBy:'post_id'">
+				<td><a href="/#/storelines" data-target="#myModal" ng-click="grabStuff(contact.store)" class="list-group-item active">{{contact.store}}</td>
+				<td>
+					<a href="/#/contacts/{{$index}}" class="btn btn-default btn-xs">View</a>
+					<button class="btn btn-danger btn-xs" ng-click="delete($index)">Delete</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+
+</div>
+-->
